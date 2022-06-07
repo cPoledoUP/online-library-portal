@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('connection.php');
 
 if(isset($_POST['info'] )){
@@ -11,7 +11,7 @@ if(isset($_POST['info'] )){
 
     $query = "INSERT INTO feedback_db (feedback_type, feedback , firstname, lastname, email ) VALUES ( '$fb_type','$feedback','$firstname','$lastname','$email')";
     mysqli_query($conn ,$query);
-
+    $_SESSION['insert-done'] = 'Thank you for your feedback!';
 }
 
 mysqli_close($conn);

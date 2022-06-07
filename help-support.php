@@ -1,5 +1,11 @@
 <?php
+session_start();
 include('utils/connection.php');
+
+if (isset($_SESSION['insert-done'])) {
+    echo "<script>alert('${_SESSION["insert-done"]}')</script>";
+    unset($_SESSION['insert-done']);
+}
 
 $query = 'SELECT Question, Answer FROM freq_ask_questions';
 
