@@ -75,7 +75,7 @@ if (isset($_GET['ID'])) {
         <div class="mainBar">
             <div class="titleBar">
                 <div class="mainTitle">
-                    <p10><?php echo $book_details['Title']; ?></p10>
+                    <p10><?php echo htmlspecialchars($book_details['Title']); ?></p10>
                     <p9>
                         <p9>By</p9>
                         <?php echo htmlspecialchars(implode(', ', $book_details['Authors'])); ?>

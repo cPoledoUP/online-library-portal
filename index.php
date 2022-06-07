@@ -47,7 +47,7 @@ include('templates/head.php');
                     <img src="img/icons/cover-page.png" alt="book icon" class="book-img">
                     <div class="book-text">
                         <a href="bookpage.php?ID=<?php echo htmlspecialchars($recentID) ?>">
-                            <p2><?php echo $recentTitle; ?></p2>
+                            <p2><?php echo htmlspecialchars($recentTitle); ?></p2>
                         </a>
                         <p> by
                             <?php
@@ -78,7 +78,7 @@ include('templates/head.php');
                 <div class="card-content">
                     <img src="img/icons/cover-page.png" alt="book icon" width="140px" height="190px" class="book-img">
                     <a href="bookpage.php?ID=<?php echo htmlspecialchars($top['BookID']); ?>">
-                        <p> <?php echo $topTitle; ?> </p>
+                        <p> <?php echo htmlspecialchars($topTitle); ?> </p>
                     </a>
                 </div>
             <?php
