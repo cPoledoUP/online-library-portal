@@ -1,0 +1,165 @@
+.main-content{
+    background-color: white;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p1{
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/* ========================= */
+
+.card {
+    width: 100%;
+    background-color: #7f7f7f;
+    border-radius: 12px;
+    padding: 1em;
+}
+
+.card-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1em;
+}
+
+.intro-div .card-content {
+    height: 100%;
+}
+
+.intro-title{
+    padding: 0;
+    margin: 0.5em 0;
+}
+
+.login {
+    background-color: rgb(210, 210, 210);
+    border-radius: 12px;
+    padding: 1em;
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.input{
+    width: 100%;
+    white-space: nowrap;
+}
+
+.input > input {
+    width: inherit;
+    border: none;
+    border-radius: 12px;
+    padding: 0.5em 1em;
+}
+
+.recent-list{
+    max-height: 41.5em;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    overflow-y: scroll;
+}
+
+.book-img{
+    cursor: pointer;
+    height: 190px;
+    display: block;
+    margin: auto;
+    top: 50%;
+}
+.book-text{
+    cursor: pointer;
+    display: block;
+    flex-direction: column;
+    font-size: 80%;
+}
+
+.book-text p, .book-text p2{
+    margin-bottom: 0.5em; 
+    margin-top: 0em;
+}
+
+.book-text p2{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.overview{
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 9em;
+    line-height: 1.8em;
+}
+
+.top-rated-list{
+    max-height: 41.5em;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    overflow-y: scroll;
+}
+
+.top-rated-list p {
+    text-align: center;
+}
+
+/* ========================= */
+
+@media (min-width: 800px) {
+    .intro-div { grid-area: intro; }
+    .login-div { grid-area: login; }
+    .recent-div { grid-area: recent; }
+    .top-div { grid-area: topRated; }
+
+    .main-content {
+        display: grid;
+        grid-template-areas: 
+            'intro intro login'
+            'recent recent topRated';
+    }
+
+    .recent-list .book-img {
+        float: left;
+        padding-right: 1em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-content {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-areas: 
+            'recent recent intro intro login'
+            'recent recent topRated topRated topRated';
+    }
+
+    .top-rated-list {
+        max-height: fit-content;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+}
