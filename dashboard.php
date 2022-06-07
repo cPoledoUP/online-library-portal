@@ -123,45 +123,47 @@ elseif (isset($_POST['edit-book'])) {
     // check for errors
     if (isset($input_err)) {
         echo '<script>alert("Error:\n';
-        foreach ($input_err as $err)
+        foreach ($input_err as $key => $err) {
+            $input_array[$key] = '';
             echo $err . '\n';
+        }
         echo '")</script>';
-    } else {
+    }
 
-        // make inputs safe for entering to the database
-        foreach ($input_array as &$input) {
-            $input = mysqli_real_escape_string($conn, $input);
-            if ($input == '')
-                $input = 'NULL';
-            else
-                $input = "'$input'";
-        }
-        unset($input);
+    // make inputs safe for entering to the database
+    foreach ($input_array as &$input) {
+        $input = mysqli_real_escape_string($conn, $input);
+        if ($input == '')
+            $input = 'NULL';
+        else
+            $input = "'$input'";
+    }
+    unset($input);
 
-        $query = "UPDATE book SET Title=${input_array['Title']}, PubDate=${input_array['PubDate']}, Publisher=${input_array['Publisher']}, Language=${input_array['Language']}, PageCount=${input_array['PageCount']}, ISBN=${input_array['ISBN']}, Rating=${input_array['Rating']}, Overview=${input_array['Overview']} WHERE BookID=${input_array['BookID']}";
-        mysqli_query($conn, $query);
+    $query = "UPDATE book SET Title=${input_array['Title']}, PubDate=${input_array['PubDate']}, Publisher=${input_array['Publisher']}, Language=${input_array['Language']}, PageCount=${input_array['PageCount']}, ISBN=${input_array['ISBN']}, Rating=${input_array['Rating']}, Overview=${input_array['Overview']} WHERE BookID=${input_array['BookID']}";
+    mysqli_query($conn, $query);
 
-        $query = "DELETE FROM rl_book_author WHERE BookID = ${input_array['BookID']}";
-        mysqli_query($conn, $query);
-        if ($input_array['Author'] != 'NULL') {
-            $authors = explode(',', substr($input_array['Author'], 1, -1));
-            foreach ($authors as $author) {
-                $query = "INSERT INTO rl_book_author (BookID, Author) VALUES (${input_array['BookID']}, '$author')";
-                mysqli_query($conn, $query);
-            }
-        }
-
-
-        $query = "DELETE FROM rl_book_genre WHERE BookID = ${input_array['BookID']}";
-        mysqli_query($conn, $query);
-        if ($input_array['Genre'] != 'NULL') {
-            $genres = explode(',', substr($input_array['Genre'], 1, -1));
-            foreach ($genres as $genre) {
-                $query = "INSERT INTO rl_book_genre (BookID, Genre) VALUES (${input_array['BookID']}, '$genre')";
-                mysqli_query($conn, $query);
-            }
+    $query = "DELETE FROM rl_book_author WHERE BookID = ${input_array['BookID']}";
+    mysqli_query($conn, $query);
+    if ($input_array['Author'] != 'NULL') {
+        $authors = explode(',', substr($input_array['Author'], 1, -1));
+        foreach ($authors as $author) {
+            $query = "INSERT INTO rl_book_author (BookID, Author) VALUES (${input_array['BookID']}, '$author')";
+            mysqli_query($conn, $query);
         }
     }
+
+
+    $query = "DELETE FROM rl_book_genre WHERE BookID = ${input_array['BookID']}";
+    mysqli_query($conn, $query);
+    if ($input_array['Genre'] != 'NULL') {
+        $genres = explode(',', substr($input_array['Genre'], 1, -1));
+        foreach ($genres as $genre) {
+            $query = "INSERT INTO rl_book_genre (BookID, Genre) VALUES (${input_array['BookID']}, '$genre')";
+            mysqli_query($conn, $query);
+        }
+    }
+
 }
 
 // if clicked on [Register User]
