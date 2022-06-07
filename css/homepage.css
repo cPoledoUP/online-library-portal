@@ -1,8 +1,8 @@
 .main-content{
     background-color: white;
-    padding: 1em;
+    padding: 0.5em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1em;
 }
 
@@ -20,9 +20,32 @@ p1{
     font-weight: bold;
 }
 
-.recently-added{
-    max-width: 45%;
+/* ========================= */
+
+.card {
+    width: 100%;
     background-color: #7f7f7f;
+    border-radius: 12px;
+    padding: 1em;
+}
+
+.card-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1em;
+}
+
+.intro-div .card-content {
+    height: 100%;
+}
+
+.intro-title{
+    padding: 0;
+    margin: 0.5em 0;
+}
+
+.login {
+    background-color: rgb(210, 210, 210);
     border-radius: 12px;
     padding: 1em;
     margin: 1em 0;
@@ -32,35 +55,36 @@ p1{
     flex-wrap: wrap;
 }
 
+.input{
+    width: 100%;
+    white-space: nowrap;
+}
+
+.input > input {
+    width: inherit;
+    border: none;
+    border-radius: 12px;
+    padding: 0.5em 1em;
+}
+
 .recent-list{
     max-height: 41.5em;
     border-radius: 12px;
-    padding: 1em;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
     overflow-y: scroll;
 }
 
-.book{
-    flex: 1;
-    background-color: white;
-    border-radius: 12px;
-    padding: 1em;
-    display: flex;
-    gap: 0.3em;
-}
-
 .book-img{
     cursor: pointer;
     height: 190px;
-    margin: 0;
+    display: block;
+    margin: auto;
     top: 50%;
 }
-
 .book-text{
     cursor: pointer;
-    margin: 0;
     display: block;
     flex-direction: column;
     font-size: 80%;
@@ -88,102 +112,55 @@ p1{
     line-height: 1.8em;
 }
 
-.right-side{
-    background-color: #7f7f7f;
-    border-radius: 12px;
-    margin: 1em 0;
-    flex-wrap: wrap;
-    padding: 1em;
-    flex-direction: row;
-    gap: 1em;
-}
-
-.top{
-    margin-left: 1em;
-    display: flex;
-    max-height: 45%;
-    gap: 0.5em;
-}
-
-.intro{
-    background-color: white;
-    max-width: 70%;
-    border-radius: 12px;
-    padding: 1em;
-    margin: 1em 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
-    flex-wrap: wrap;
-}
-
-.intro p1, .intro p2{
-    display: block;
-    flex-direction: column;
-    align-items: flex-start; 
-}
-
-.intro-title{
-    font-size: xx-large;
-}
-
-.intro p2{
-    font-size: 95%;
-}
-
-.login {
-    background-color: rgb(210, 210, 210);
-    border-radius: 12px;
-    padding: 1em;
-    margin: 1em 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    flex-wrap: wrap;
-}
-
-.input{
-    max-width: fit-content;
-    white-space: nowrap;
-}
-
-.input > input {
-    border: none;
-    border-radius: 12px;
-    padding: 0.5em 1em;
-}
-
-.top-rated{
-    background-color: rgb(210, 210, 210);
-    border-radius: 12px;
-    padding: 1em;
-    margin: 1em 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
 .top-rated-list{
-    width: 50em;
+    max-height: 41.5em;
     border-radius: 12px;
-    padding: 1em;
     display: flex;
-    flex-direction: row;
-    gap: 0.5em;
-    overflow-x: scroll;
-}
-
-.top-book{
-    background-color: white;
-    border-radius: 12px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.top-book p{
-    display: block;
     flex-direction: column;
-    align-items: flex-start; 
+    gap: 0.5em;
+    overflow-y: scroll;
+}
+
+.top-rated-list p {
+    text-align: center;
+}
+
+/* ========================= */
+
+@media (min-width: 800px) {
+    .intro-div { grid-area: intro; }
+    .login-div { grid-area: login; }
+    .recent-div { grid-area: recent; }
+    .top-div { grid-area: topRated; }
+
+    .main-content {
+        display: grid;
+        grid-template-areas: 
+            'intro intro login'
+            'recent recent topRated';
+    }
+
+    .recent-list .book-img {
+        float: left;
+        padding-right: 1em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-content {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-template-areas: 
+            'recent recent intro intro login'
+            'recent recent topRated topRated topRated';
+    }
+
+    .top-rated-list {
+        max-height: fit-content;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
 }

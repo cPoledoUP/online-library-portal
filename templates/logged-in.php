@@ -4,7 +4,7 @@
         <div class="input">
             <input type="text" name="staffID" placeholder="Staff ID: <?php echo htmlspecialchars($staff_id); ?>" disabled><br><br>
             <input type="text" name="name" placeholder="<?php echo htmlspecialchars(implode(' ', $staff_name)); ?>" disabled><br><br>
-            <input type="submit" name="dashboard" class="btn blue clickable" value="Dashboard">
+            <input type="submit" name="dashboard" class="btn blue clickable" value="Dashboard"><br><br>
             <input type="submit" name="logout" class="btn red clickable" value="Logout">
         </div>
     </form>
