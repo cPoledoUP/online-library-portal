@@ -99,6 +99,7 @@ elseif (isset($_POST['remove-book'])) {
 // if clicked [Save Changes]
 elseif (isset($_POST['edit-book'])) {
     foreach ($_POST as $key => $value) {
+        $value = trim($value); // remove spaces before and after the input
         $input_array[$key] = $value;
     }
     array_pop($input_array); // remove $_POST['edit-book']
@@ -146,6 +147,7 @@ elseif (isset($_POST['edit-book'])) {
     $query = "DELETE FROM rl_book_author WHERE BookID = ${input_array['BookID']}";
     mysqli_query($conn, $query);
     if ($input_array['Author'] != 'NULL') {
+        $input_array['Author'] = preg_replace('/\s*,\s*/', ',', $input_array['Author']); // remove spaces before and after a comma
         $authors = explode(',', substr($input_array['Author'], 1, -1));
         foreach ($authors as $author) {
             $query = "INSERT INTO rl_book_author (BookID, Author) VALUES (${input_array['BookID']}, '$author')";
@@ -157,6 +159,7 @@ elseif (isset($_POST['edit-book'])) {
     $query = "DELETE FROM rl_book_genre WHERE BookID = ${input_array['BookID']}";
     mysqli_query($conn, $query);
     if ($input_array['Genre'] != 'NULL') {
+        $input_array['Genre'] = preg_replace('/\s*,\s*/', ',', $input_array['Genre']); // remove spaces before and after a comma
         $genres = explode(',', substr($input_array['Genre'], 1, -1));
         foreach ($genres as $genre) {
             $query = "INSERT INTO rl_book_genre (BookID, Genre) VALUES (${input_array['BookID']}, '$genre')";
