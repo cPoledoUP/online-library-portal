@@ -361,7 +361,7 @@ mysqli_close($conn);
         <div class="inner-card">
             <h3>For Existing Users</h3>
             <form class="search" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                <input type="text" placeholder="Search Database" name="search-item">
+                <input type="text" placeholder="Enter User ID" name="search-item">
                 <button class="blue" name="user-search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
