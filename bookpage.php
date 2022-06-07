@@ -49,7 +49,7 @@ if (isset($_GET['ID'])) {
 <link rel="stylesheet" href="css/bookpage.css">
 <?php include('templates/nav.php') ?>
 
-<?php if (isset($_GET['ID'])) : ?>
+<?php if (!empty($book_details)) : ?>
     <div class="container">
         <div class="sidebarL">
             <div class="pictureBar">
