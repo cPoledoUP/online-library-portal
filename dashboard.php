@@ -384,7 +384,7 @@ mysqli_close($conn);
                                     Returned:<br>
                                     <?php echo htmlspecialchars($borrow['DateReturned']); ?><br>
                                 <?php else : ?>
-                                    <button class="btn red clickable" name="return-book" value="<?php echo htmlspecialchars($borrow['BorrowID']); ?>">Due: <?php echo htmlspecialchars($borrow['DueDate']); ?></button>
+                                    <button class="btn red clickable" name="return-book" value="<?php echo htmlspecialchars($borrow['BorrowID']); ?>">Return Book<br>Due: <?php echo htmlspecialchars($borrow['DueDate']); ?></button>
                                 <?php endif; ?>
                             </p>
                         </form>
