@@ -339,13 +339,14 @@ $get = htmlspecialchars(http_build_query($_GET));
                     </p>
                     <?php if ($book['Availability'] == 'Not Available') : ?>
                         <button class="btn red" disabled>
-                    <?php elseif (isset($_SESSION['user-id-borrow'])) : ?>
+                    <?php elseif (isset($_SESSION['user-id-borrow'])) : 
+                        $borrowing = true; ?>
                         <input type="hidden" name="user-id" value="<?php echo htmlspecialchars($_SESSION['user-id-borrow']) ?>">
-                        <button class="btn blue clickable" name="borrow-book" value="<?php echo htmlspecialchars($book['BookID']) ?>">
+                        <button class="btn green clickable" name="borrow-book" value="<?php echo htmlspecialchars($book['BookID']) ?>">
                     <?php else : ?>
                         <button class="btn blue" disabled>
                     <?php endif; ?>
-                        <?php echo htmlspecialchars($book['Availability']); ?>
+                        <?php echo htmlspecialchars($book['Availability']); ?><?php if (isset($borrowing)) echo '<br>Click to borrow'; ?>
                         </button>
                 </form>
                 <img src="img/icons/cover-page.png" alt="book icon" width="150px" height="200px">

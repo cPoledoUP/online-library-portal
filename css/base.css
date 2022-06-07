@@ -69,6 +69,16 @@ textarea {
     color: white;
 }
 
+/* green */
+.green {
+    background-color: green;
+    color: white;
+}
+
+.green * {
+    color: white;
+}
+
 /* Utility classes */
 
 /* unselectable - makes text unselectable */
