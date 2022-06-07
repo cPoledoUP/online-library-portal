@@ -82,9 +82,9 @@ if (isset($_GET['ID'])) {
                     </p9>
                 </div>
                 <div class="hyperlinks">
-                    <a class="one" href="user-history.php">Borrow history</a>
+                    <a href="user-history.php">Borrow history</a>
                     <!---- link for USER HISTORY -->
-                    <a class="two" href="dashboard.php?edit-book=<?php echo htmlspecialchars($book_details['BookID']); ?>">Edit</a>
+                    <a href="dashboard.php?edit-book=<?php echo htmlspecialchars($book_details['BookID']); ?>">Edit</a>
                     <!---- link for DASHBOARD -->
                 </div>
             </div>
