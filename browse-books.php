@@ -169,12 +169,6 @@ mysqli_free_result($result);
 
 $num_of_results = count($books);
 
-// further filter the returned results
-$query = $query . " LIMIT $books_per_page OFFSET $offset";
-$result = mysqli_query($conn, $query);
-$books = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_free_result($result);
-
 // include authors to $books array
 foreach ($books as $key => &$book) {
     $bookID = $book['BookID'];
@@ -225,6 +219,15 @@ unset($book);
 
 $max_page = ceil($num_of_results / $books_per_page);
 $max_page = $max_page ? $max_page : 1;
+
+// remove books that is not shown in current page
+$books = array_values($books);
+foreach ($books as $key => $book) {
+    if ($key < ($current_page-1) * $books_per_page || $key > ($current_page * $books_per_page)-1) {
+        echo '<br>Remove'.$book['Title'];
+        unset($books[$key]);
+    }
+}
 
 mysqli_close($conn);
 // end of retrieving data from server, all needed data stored in $books array
