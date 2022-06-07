@@ -223,10 +223,8 @@ $max_page = $max_page ? $max_page : 1;
 // remove books that is not shown in current page
 $books = array_values($books);
 foreach ($books as $key => $book) {
-    if ($key < ($current_page-1) * $books_per_page || $key > ($current_page * $books_per_page)-1) {
-        echo '<br>Remove'.$book['Title'];
+    if ($key < ($current_page-1) * $books_per_page || $key > ($current_page * $books_per_page)-1)
         unset($books[$key]);
-    }
 }
 
 mysqli_close($conn);
