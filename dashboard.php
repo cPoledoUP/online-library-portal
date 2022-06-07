@@ -81,7 +81,16 @@ elseif (isset($_POST['book-to-edit'])) {
 // if clicked [Add New Book]
 elseif (isset($_POST['add-new-book'])) {
     $date = date('Y-m-d H:i:s');
-    $query = "INSERT INTO book (BookID, Title, DateAdded) VALUES (NULL, '<<Newly Added Book>>' , '$date')";
+    $query = "INSERT INTO book (BookID, Title, PubDate, Publisher, Language, PageCount, ISBN, Overview, Rating, DateAdded) VALUES (NULL, '<<Newly Added Book>>' , '0000', 'Some Publisher', 'eng', '0', '0000000000000', 'unset book', '0', '$date')";
+    mysqli_query($conn, $query);
+
+    $result = mysqli_query($conn, 'SELECT LAST_INSERT_ID()');
+    $new_book_id = mysqli_fetch_assoc($result)['LAST_INSERT_ID()'];
+    mysqli_free_result($result);
+
+    $query = "INSERT INTO rl_book_author (BookID, Author) VALUES ($new_book_id, 'Unset')";
+    mysqli_query($conn, $query);
+    $query = "INSERT INTO rl_book_genre (BookID, Genre) VALUES ($new_book_id, 'Unset')";
     mysqli_query($conn, $query);
 }
 
@@ -91,6 +100,8 @@ elseif (isset($_POST['remove-book'])) {
     $query = "DELETE FROM rl_book_author WHERE BookID = $book_id";
     mysqli_query($conn, $query);
     $query = "DELETE FROM rl_book_genre WHERE BookID = $book_id";
+    mysqli_query($conn, $query);
+    $query = "DELETE FROM borrow WHERE BookID = $book_id";
     mysqli_query($conn, $query);
     $query = "DELETE FROM book WHERE BookID = $book_id";
     mysqli_query($conn, $query);
