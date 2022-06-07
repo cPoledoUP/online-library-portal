@@ -238,7 +238,7 @@ INSERT INTO `rl_book_genre` (`BookID`, `Genre`) VALUES
 (11, 'Dystopian Fiction'),
 (11, 'Political Fiction'),
 (11, 'Science Fiction'),
-(12, ' Horror'),
+(12, 'Horror'),
 (12, 'Crime'),
 (12, 'Mystery'),
 (12, 'Psychological Thriller'),
