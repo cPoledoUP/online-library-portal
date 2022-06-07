@@ -322,18 +322,18 @@ mysqli_close($conn);
                     echo '<h4>' . htmlspecialchars("Editing BookID: ${book_to_edit['BookID']} - ${book_to_edit['Title']}") . '</h4>';
                     ?>
                     <input type="hidden" name="BookID" value="<?php echo htmlspecialchars($book_to_edit['BookID']); ?>">
-                    <input type="text" placeholder="Book Title" name="Title" value="<?php echo htmlspecialchars($book_to_edit['Title']); ?>">
-                    <input type="text" placeholder="Author" name="Author" value="<?php echo htmlspecialchars(implode(',', $authors_to_edit)); ?>">
-                    <input type="text" placeholder="Genre" name="Genre" value="<?php echo htmlspecialchars(implode(',', $genres_to_edit)); ?>">
-                    <input type="text" placeholder="Publish Year" name="PubDate" value="<?php echo htmlspecialchars($book_to_edit['PubDate']); ?>">
-                    <input type="text" placeholder="Publisher" name="Publisher" value="<?php echo htmlspecialchars($book_to_edit['Publisher']); ?>">
-                    <input type="text" placeholder="Language" name="Language" value="<?php echo htmlspecialchars($book_to_edit['Language']); ?>">
-                    <input type="text" placeholder="Pages" name="PageCount" value="<?php echo htmlspecialchars($book_to_edit['PageCount']); ?>">
-                    <input type="text" placeholder="ISBN" name="ISBN" value="<?php echo htmlspecialchars($book_to_edit['ISBN']); ?>">
-                    <input type="text" placeholder="Rating" name="Rating" value="<?php echo htmlspecialchars($book_to_edit['Rating']); ?>">
-                    <textarea placeholder="Overview:" rows="5" name="Overview"><?php echo htmlspecialchars($book_to_edit['Overview']); ?></textarea>
+                    <input required type="text" placeholder="Book Title" name="Title" value="<?php echo htmlspecialchars($book_to_edit['Title']); ?>">
+                    <input required type="text" placeholder="Author" name="Author" value="<?php echo htmlspecialchars(implode(',', $authors_to_edit)); ?>">
+                    <input required type="text" placeholder="Genre" name="Genre" value="<?php echo htmlspecialchars(implode(',', $genres_to_edit)); ?>">
+                    <input required type="text" placeholder="Publish Year" name="PubDate" value="<?php echo htmlspecialchars($book_to_edit['PubDate']); ?>">
+                    <input required type="text" placeholder="Publisher" name="Publisher" value="<?php echo htmlspecialchars($book_to_edit['Publisher']); ?>">
+                    <input required type="text" placeholder="Language" name="Language" value="<?php echo htmlspecialchars($book_to_edit['Language']); ?>">
+                    <input required type="text" placeholder="Pages" name="PageCount" value="<?php echo htmlspecialchars($book_to_edit['PageCount']); ?>">
+                    <input required type="text" placeholder="ISBN" name="ISBN" value="<?php echo htmlspecialchars($book_to_edit['ISBN']); ?>">
+                    <input required type="text" placeholder="Rating" name="Rating" value="<?php echo htmlspecialchars($book_to_edit['Rating']); ?>">
+                    <textarea required placeholder="Overview:" rows="5" name="Overview"><?php echo htmlspecialchars($book_to_edit['Overview']); ?></textarea>
                     <div class="center">
-                        <button class="btn red clickable" name="remove-book">Remove</button>
+                        <button class="btn red clickable" name="remove-book" formnovalidate>Remove</button>
                         <button class="btn blue clickable" name="edit-book">Save changes</button>
                     </div>
                 </form>
