@@ -86,5 +86,7 @@ include('templates/head.php');
         </div>
     </div>
 
+</div>
+
 
 <?php include('templates/footer.php') ?>
